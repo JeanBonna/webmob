@@ -39,6 +39,9 @@ const MeuNavbar = () => {
             <Nav.Link as={Link} href="/explorar" passHref>
               Explorar
             </Nav.Link>
+            <Nav.Link as={Link} href="/tab" passHref>
+              Tabs
+            </Nav.Link>
             <Nav.Link as={Link} href="/cachorro" passHref>
               Cachorrinho
             </Nav.Link>

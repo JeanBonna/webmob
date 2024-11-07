@@ -23,6 +23,15 @@ export class UserController{
         }
     };
 
+    getByUsername = async (req: Request, res: Response): Promise<void> => {
+        const user = await this.userRepository.getByUsername(req.params.username);
+        if(!user){
+            res.status(404).send('User not found');
+        }else{
+            res.status(200).json(user);
+        }
+    };
+
     create = async (req: Request, res: Response): Promise<void> =>{
         const newUser = await this.userRepository.create(req.body);
         res.status(201).json(newUser);

@@ -1,4 +1,4 @@
-import { DataSource, In, Repository } from "typeorm";
+import { DataSource, In, Like, Repository } from "typeorm";
 import UserEntity from '../entities/user'
 
 
@@ -17,6 +17,14 @@ class UserRepository implements UserRepository{
         const user = await this.repository.findOneBy({id});
         return user || undefined;
     }
+
+    async getByUsername(username: string): Promise<UserEntity[]> {
+        const users = await this.repository.find({
+            where: { username: Like(`%${username}%`) }
+        });
+        return users;
+    }
+    
 
     async getBy(ids: number[]): Promise<UserEntity[] | undefined>{
         const users = await this.repository.findBy({ id: In(ids)})

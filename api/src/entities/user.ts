@@ -20,10 +20,10 @@ export class User {
     bio: string
 
 
-    @OneToMany(() => Follow, follow => follow.followed)
+    @OneToMany(() => Follow, follow => follow.followed, {onDelete: 'CASCADE'})
     followers?: Follow[];
 
-    @OneToMany(() => Follow, follow => follow.follower)
+    @OneToMany(() => Follow, follow => follow.follower, {onDelete: 'CASCADE'})
     following?: Follow[];
 
     constructor(id: number, username:string, password:string, email:string, bio:string){

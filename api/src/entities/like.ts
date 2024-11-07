@@ -9,10 +9,10 @@ export class Like {
     id: number
 
 
-    @ManyToOne(() => User, user => user.id)
+    @ManyToOne(() => User, user => user.id, {onDelete: 'CASCADE'})
     user: User
 
-    @ManyToOne(() => Post, post => post.id)
+    @ManyToOne(() => Post, post => post.id, {onDelete: 'CASCADE'})
     post: Post
 
     constructor(id: number, user:User, post:Post){
