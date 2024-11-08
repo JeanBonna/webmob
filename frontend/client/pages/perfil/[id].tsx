@@ -26,11 +26,10 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ user }) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [isFollowing, setIsFollowing] = useState<boolean | null>(null); // Inicialize como null
+  const [isFollowing, setIsFollowing] = useState<boolean | null>(null);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Obtém o ID do usuário logado do localStorage
     const storedUserId = localStorage.getItem("userId");
     setCurrentUserId(storedUserId);
   }, []);
@@ -58,7 +57,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ user }) => {
 
     try {
       const response = await axios.get(`http://localhost:3001/webmob/follow/${currentUserId}/${user.id}`);
-      setIsFollowing(response.data.isFollowing); // Supondo que retorna { isFollowing: true/false }
+      setIsFollowing(response.data.isFollowing);
     } catch (error) {
       console.error("Erro ao verificar status de seguimento:", error);
     }
@@ -102,7 +101,6 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ user }) => {
       <p><strong>Email:</strong> {user.email}</p>
       <p><strong>Bio:</strong> {user.bio}</p>
 
-      {/* Exibe o botão Seguir/Deixar de Seguir somente após a verificação do status */}
       {user.id.toString() !== currentUserId && isFollowing !== null && (
         <Button variant="primary" onClick={handleFollow} className="mb-4">
           {isFollowing ? "Deixar de seguir" : "Seguir"}

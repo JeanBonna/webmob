@@ -6,36 +6,34 @@ interface PostCardProps {
   userId: string;
   content: string;
   initialLikes: number;
-  postId: number; // Adiciona o postId
+  postId: number; 
 }
 
 const PostCard: React.FC<PostCardProps> = ({ username, userId, content, postId }) => {
   const [likes, setLikes] = useState(0);
-  const [liked, setLiked] = useState(false); // Para controlar se o post já foi curtido
+  //const [liked, setLiked] = useState(false);
 
 
   const fetchLikes = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/webmob/countlikes/${postId}`); // Altere a URL conforme necessário
+      const response = await axios.get(`http://localhost:3001/webmob/countlikes/${postId}`); 
       if (response.status === 200) {
-        setLikes(response.data.likesCount); // Supondo que o backend retorna { likesCount: <número> }
+        setLikes(response.data.likesCount); 
       }
     } catch (error) {
       console.error("Erro ao buscar a contagem de likes:", error);
     }
   };
 
-  // Efeito para buscar a contagem de likes quando o componente é montado
   useEffect(() => {
     fetchLikes();
   }, [postId]);
 
 
 
-  // Função para curtir/descurtir o post
   const handleLike = async () => {
     try {
-      const userId = localStorage.getItem("userId"); // Supondo que o ID do usuário está no localStorage
+      const userId = localStorage.getItem("userId"); 
       if (!userId) throw new Error("Usuário não autenticado.");
       console.log(postId);
       console.log(userId)
@@ -43,10 +41,10 @@ const PostCard: React.FC<PostCardProps> = ({ username, userId, content, postId }
       const response = await axios.post('http://localhost:3001/webmob/like', { postId, userId });
       if (response.status === 201) {
         setLikes(likes + 1);
-        setLiked(true);
+        //setLiked(true);
       } else if (response.status === 204) {
         setLikes(likes - 1);
-        setLiked(false);
+        //setLiked(false);
       }
     } catch (error) {
       console.error("Erro ao curtir o post:", error);
@@ -71,7 +69,6 @@ const PostCard: React.FC<PostCardProps> = ({ username, userId, content, postId }
   );
 };
 
-// Estilos inline para simplificar o exemplo
 const styles = {
   card: {
     border: '1px solid #ddd',

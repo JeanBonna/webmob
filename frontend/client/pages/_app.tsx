@@ -6,12 +6,11 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Container from 'react-bootstrap/Container';
 import MeuNavbar from "./components/MeuNavBar";
-//import NavbarTop from "./components/NavBar";
-//import FooterBar from './components/FooterBar';
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isLoginPage = router.pathname === "/login" || router.pathname ==="/cadastro"; // Verifica se está na página de login
+  const isLoginPage = router.pathname === "/login" || router.pathname ==="/cadastro"; 
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");

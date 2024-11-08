@@ -1,17 +1,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-//import { useRouter } from 'next/router'
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 const MeuNavbar = () => {
-  //const router = useRouter();
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
-    //Pode ser necessário ou não.
-    //router.push("/login");
+
   };
 
   const [userId, setUserId] = useState("");

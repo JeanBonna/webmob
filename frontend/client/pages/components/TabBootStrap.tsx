@@ -10,7 +10,6 @@ function TabBootStrap() {
   const [deleteUserMessage, setDeleteUserMessage] = useState<string | null>(null);
   const [deletePostMessage, setDeletePostMessage] = useState<string | null>(null);
 
-  // Função para deletar um usuário pelo ID
   const handleDeleteUser = async () => {
     try {
       const response = await axios.delete(`http://localhost:3001/webmob/user/${userId}`);
@@ -25,7 +24,6 @@ function TabBootStrap() {
     }
   };
 
-  // Função para deletar um post pelo ID
   const handleDeletePost = async () => {
     try {
       const response = await axios.delete(`http://localhost:3001/webmob/post/${postId}`);
@@ -78,10 +76,10 @@ function TabBootStrap() {
           </Form>
         </Tab>
         <Tab eventKey="info" title="Informações">
-          <p>Esta aba contém informações adicionais sobre o sistema.</p>
+          <p>Vamos fingir que tem Informações aqui nessa aba, me da 10 professor pfv</p>
         </Tab>
         <Tab eventKey="settings" title="Configurações">
-          <p>Aqui você pode ajustar as configurações da aplicação.</p>
+          <p>Vamos fingir que tem Configurações aqui</p>
         </Tab>
       </Tabs>
     </Container>

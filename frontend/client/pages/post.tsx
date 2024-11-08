@@ -23,7 +23,6 @@ const PostsPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Função para buscar os posts do backend
   const fetchPosts = async () => {
     try {
       const response = await axios.get('http://localhost:3001/webmob/posts');
@@ -35,10 +34,9 @@ const PostsPage: React.FC = () => {
     }
   };
 
-  // Função para criar um novo post
   const handleCreatePost = async () => {
     try {
-      const userId = localStorage.getItem("userId"); // Supondo que o ID do usuário está no localStorage
+      const userId = localStorage.getItem("userId"); 
       if (!userId) {
         setError("Usuário não autenticado.");
         return;
@@ -50,16 +48,13 @@ const PostsPage: React.FC = () => {
       });
       
       if (response.status === 201) {
-        // Adiciona o novo post à lista de posts
-        //setPosts([response.data, ...posts]);
-        setNewPostContent(''); // Limpa o campo de texto
+        setNewPostContent(''); 
       }
     } catch (err) {
       setError('Erro ao criar o post');
     }
   };
 
-  // Efeito para buscar os posts quando o componente é montado
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -76,10 +71,8 @@ const PostsPage: React.FC = () => {
     <Container className="mt-5 p-5">
       <h1>Feed</h1>
       
-      {/* Área de criação de post */}
       <Form className="mb-4">
         <Form.Group controlId="newPostContent">
-          {/*<Form.Label>Criar novo post</Form.Label>*/}
           <Form.Control 
             as="textarea"
             rows={3}
@@ -94,7 +87,6 @@ const PostsPage: React.FC = () => {
         </Button>
       </Form>
 
-      {/* Lista de posts */}
       <div>
         {posts.map((post) => (
           <PostCard 

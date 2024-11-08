@@ -21,7 +21,6 @@ const UserCard: React.FC<UserCardProps> = ({ id, username, email, bio }) => {
   );
 };
 
-// Estilos inline para simplificar o exemplo
 const styles = {
   card: {
     border: '1px solid #ddd',

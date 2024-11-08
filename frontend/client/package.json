@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "author": "Jean Bonadeo Dal Santo - 198652",
   "version": "0.1.0",
   "private": true,
   "scripts": {

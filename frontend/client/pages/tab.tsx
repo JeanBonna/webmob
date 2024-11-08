@@ -1,7 +1,7 @@
 // pages/admin.tsx
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import TabBootStrap from './components/TabBootStrap'; // Altere o caminho conforme necessário
+import TabBootStrap from './components/TabBootStrap';
 
 const Tab: React.FC = () => {
   return (
